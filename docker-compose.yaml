@@ -1,0 +1,51 @@
+services:
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: 'springboot'
+      MYSQL_USER: 'springboot'
+      MYSQL_PASSWORD: '5FjGSUZn7R8qW6jnthT8BwwHZV2Gyy'
+      MYSQL_ROOT_PASSWORD: 'unife2024'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - ./DB:/docker-entrypoint-initdb.d
+    networks:
+      - jarvis-net
+
+  mock:
+    build: ./Mock
+    ports:
+      - '3000:3000'
+    expose:
+      - '3000'
+    networks:
+      - jarvis-net
+
+  backend:
+    build: ./JARVIS-backend
+    ports:
+      - '8080:8080'
+    expose:
+      - '8080'
+    depends_on:
+      - db
+      - mock
+    networks:
+      - jarvis-net
+
+  frontend:
+    build: ./JARVIS-frontend
+    ports:
+      - '5173:5173'
+    depends_on:
+      backend:
+        condition: service_started
+    networks:
+      - jarvis-net
+
+networks:
+  jarvis-net:
+    driver: bridge
