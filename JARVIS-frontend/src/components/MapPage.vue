@@ -293,7 +293,7 @@ function keepMapUpdated() {
 
 <template>
   <title>Nuova Prenotazione</title>
-  <h1 v-if="dataEventInfo" class="first-content" style="text-align: center;">Luoghi disponibili per evento di tipo "{{dataEventInfo.event_type}}" </h1>
+  <h1 v-if="dataEventInfo" class="first-content title" style="text-align: center;">Luoghi disponibili per evento di tipo "{{dataEventInfo.event_type}}" </h1>
   <article class="disposition">
     <section class="item-disposition">
       <div style="order: 1"></div>
@@ -362,13 +362,6 @@ function keepMapUpdated() {
 </template>
 
 <style scoped>
-  h1{
-    font-size: 2em;
-  }
-  h2{
-    font-size: 1em;
-  }
-
   #map{
     border: solid var(--highlight-color) 2px;
     animation: fade-down 0.4s;
@@ -399,7 +392,6 @@ function keepMapUpdated() {
   .disposition{
     display: flex;
     align-content: center;
-    align-items: flex-start;
   }
 
   input[type='text'] {
@@ -425,7 +417,7 @@ function keepMapUpdated() {
     transition: 0.5s;
   }
 
-  @media(min-width: 430px){
+  @media(min-width: 576px){
     .disposition{
       flex-direction: row;
     }
@@ -437,16 +429,24 @@ function keepMapUpdated() {
       width: 60ch;
     }
   }
-  @media(max-width: 430px){
+  @media(max-width: 576px){
     .disposition{
       flex-direction: column;
     }
     #map {
       height: 480px;
-      width: 480px;
+      width: 100%;
     }
     .booking-box {
-      width: 480px;
+      width: 90%;
     }
+
+    h1{
+      font-size: 1.2em;
+    }
+    h2{
+      font-size: 0.5em;
+    }
+
   }
 </style>

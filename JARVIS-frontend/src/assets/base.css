@@ -41,6 +41,8 @@
   --navbar-text-color: hsl(0, 0%, 20%);
   --highlight-button-hover: hsla(160, 100%, 37%, 0.4);
   --highlight-button-active: hsla(160, 100%, 37%, 0.8);
+
+  --theme-button-inner-color: #ffc207;
 }
 
 @media (prefers-color-scheme: dark) {

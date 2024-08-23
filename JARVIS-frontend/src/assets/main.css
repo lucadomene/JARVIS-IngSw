@@ -23,6 +23,17 @@ a,
   margin:40px 0 30px;
 }
 
+h1{
+  font-size: 2em;
+}
+h2{
+  font-size: 1em;
+}
+
+.title{
+  font-weight: bolder;
+}
+
 [data-theme="light"] {
   --color-background: var(--vt-c-white);
   --color-background-soft: var(--vt-c-white-soft);
@@ -36,6 +47,7 @@ a,
 
   --navbar-bg: 	hsl(0, 0%, 95%);
   --navbar-text-color: hsl(0, 0%, 20%);
+  --theme-button-bg-color: #fff;
 }
 
 [data-theme="dark"] {
@@ -51,6 +63,8 @@ a,
 
   --navbar-bg: hsla(0, 0%, 95%, 0.27);
   --navbar-text-color: hsl(0, 0%, 100%);
+
+  --theme-button-bg-color: hsl(267, 43%, 16%);
 }
 
 @keyframes fade-down{

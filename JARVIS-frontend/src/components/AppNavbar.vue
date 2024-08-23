@@ -22,19 +22,20 @@
 </script>
 
 <template>
-  <nav role=’navigation’>
+  <nav role="navigation">
     <ul>
-      <li>
+      <li class="stayactive">
         <router-link to="/" active-class="active-link">Nuova prenotazione</router-link>
       </li>
-      <li>
+      <li class="stayactive">
         <router-link to="/bookings" active-class="active-link">Prenotazioni effettuate</router-link>
       </li>
       <li>
-        <label style="display: block" for="theme-toggle" class="theme-button-switch">
+        <label for="theme-toggle" :class="['theme-button-switch', {'active': isDarkThemeChecked}]">
           <input type="checkbox" id="theme-toggle" class="theme-button" v-model="isDarkThemeChecked">
-          Cambio Tema
-          <span class="theme-button-container"/>
+          <span :class="['theme-button-inner', {'active': isDarkThemeChecked}]">
+
+          </span>
           <span class="animateBg"/>
         </label>
       </li>
@@ -45,6 +46,8 @@
 <style scoped>
   nav ul {
     list-style: none;
+    display: flex;
+    flex-wrap: wrap;
     padding:0;
     margin:0;
     background-color: var(--navbar-bg);
@@ -53,13 +56,15 @@
     animation: fade-down 0.3s;
   }
 
+  nav ul li{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   nav ul:hover{
     box-shadow: 0 2px 20px var(--highlight-color);
     transition: .2s;
-  }
-
-  nav ul li {
-    display: inline-block;
   }
 
   nav ul li a {
@@ -68,11 +73,16 @@
     color: var(--navbar-text-color);
   }
 
-  nav ul li:active {
+  label{
+    display: flex;
+    align-items: center;
+  }
+
+  .stayactive:active {
     transform: translateY(2px);
   }
 
-  nav ul li:hover {
+  .stayactive:hover {
     background-color: var(--highlight-button-hover);
   }
 
@@ -85,38 +95,59 @@
   }
 
   .theme-button-switch {
-    display: inline-flex;
+    --theme-button-width: 75px;
     align-items: center;
-    width: 5em;
-    height: 1.5em;
-    /*border-radius: 10em;*/
-    user-select: none; /* Impedisce la selezione del testo */
+    width: var(--theme-button-width);
+    height: 30px;
+    padding:10px;
+    cursor: pointer;
+    border-radius: 50px;
+    user-select: none;
     transition: background-color 0.3s;
     box-shadow: 0 8px 40px hsla(0, 0%, 0%, .2);
-    background-color: #fff;
+    background-color: var(--theme-button-bg-color);
   }
 
-  .theme-button-container{
+  .theme-button-switch .theme-button-inner{
+    display: block;
+    position: relative;
+    width: 25px;
+    height: 25px;
+    background-color: var(--theme-button-inner-color);
+    border-radius: 50%;
+    transition: all 0.6s;
+  }
+
+  .theme-button-switch .theme-button-inner::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left:-30%;
     width: 100%;
     height: 100%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: var(--theme-button-bg-color);
+    border-radius: 50%;
+    transform: scale(0);
+    transition: all 0.6s;
   }
 
-  .animateBg{
-    position: fixed;
-    width: 200%;
-    height: 100vh;
-    z-index: -3;
-    clip-path: circle(0% at 0% 0%);
-    transition: 0.5s ease-out;
-    top: 0;
-    left: 0;
+  .theme-button-switch .theme-button-inner.active{
+    transform: translateX(calc(var(--theme-button-width) - 44px));
   }
 
-  input:checked ~ .animateBg {
-    clip-path: circle(100% at 0% 0%);
+  .theme-button-switch .theme-button-inner.active:before{
+    left: -12px;
+    transform: scale(1);
+  }
+
+  @media(min-width: 576px){
+    nav ul{
+      flex-direction: row;
+    }
+  }
+  @media(max-width: 576px){
+    nav ul{
+      flex-direction: column;
+    }
   }
 </style>

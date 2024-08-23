@@ -48,7 +48,7 @@
 
 <template>
   <title>Prenotazioni</title>
-  <h1 v-if="dataUser" class="first-content" style="text-align: center;">Prenotazioni dell'utente: {{dataUser.codice_fiscale}}</h1>
+  <h1 v-if="dataUser" class="first-content title" style="text-align: center;">Prenotazioni dell'utente: {{dataUser.codice_fiscale}}</h1>
   <div v-if="isDataBookingLoaded">
     <div v-if="dataBooking.length > 0">
       <transition-group name="list" tag="ul">
@@ -89,12 +89,6 @@
 </template>
 
 <style scoped>
-  h1{
-    font-size: 2em;
-  }
-  h2{
-    font-size: 1em;
-  }
 
   .error-container{
     border: solid var(--highlight-color) 3px;
@@ -140,10 +134,10 @@
     font-weight: 700;
   }
 
-  .list-move, /* apply transition to moving elements */
+  .list-move,
   .list-enter-active,
   .list-leave-active {
-    transition: all 0.5s ease;
+    transition: all 0.9s ease;
   }
 
   .list-enter-from,
@@ -155,24 +149,6 @@
   .list-leave-active {
     position: absolute;
   }
-
-  /*.bounce-fade-enter-active {
-    animation: bounce-in 0.5s;
-  }
-  .bounce-fade-leave-active {
-    animation: bounce-in 0.5s reverse;
-  }
-  @keyframes bounce-in {
-    0% {
-      transform: scale(0);
-    }
-    50% {
-      transform: scale(1.25);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }*/
 
   .loader-container {
     border: solid var(--highlight-color) 3px;
