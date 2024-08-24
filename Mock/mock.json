@@ -260,7 +260,7 @@
       "responses": [
         {
           "uuid": "dc8da30f-58f9-494a-b514-4d097fa53571",
-          "body": "{\n  \"event_id\": \"{{ faker 'number.int' min=1 max=10}}\",\n  \"event_type\": \"{{oneOf (array 'catering' 'pulizie' 'organizzazione' 'intrattenimento' 'decorazioni' 'tecnologia' 'animazione') }}\",\n  \"date\": \"{{dateFormat (faker 'date.soon' days=365) 'yyyy-MM-dd'}}\",\n  \"schedule_start\": \"{{time '07:00' '14:00' 'HH:mm:ss'}}\",\n  \"schedule_end\": \"{{time '15:00' '23:59' 'HH:mm:ss'}}\",\n  \"max_participants\": \"{{ faker 'number.int' min=5 max=1000}}\"\n}\n",
+          "body": "{\n  \"event_id\": \"{{ faker 'number.int' min=1 max=10}}\",\n  \"event_type\": \"{{oneOf (array 'catering' 'pulizie' 'organizzazione' 'intrattenimento' 'decorazioni' 'tecnologia' 'animazione') }}\",\n  \"date\": \"{{dateFormat (faker 'date.soon' days=365) 'yyyy-MM-dd'}}\",\n  \"schedule_start\": \"{{time '08:00' '14:00' 'HH:mm:ss'}}\",\n  \"schedule_end\": \"{{time '15:00' '20:00' 'HH:mm:ss'}}\",\n  \"max_participants\": \"{{ faker 'number.int' min=5 max=1000}}\"\n}\n",
           "latency": 0,
           "statusCode": 200,
           "label": "",
