@@ -6,8 +6,6 @@ services:
       MYSQL_USER: 'springboot'
       MYSQL_PASSWORD: '5FjGSUZn7R8qW6jnthT8BwwHZV2Gyy'
       MYSQL_ROOT_PASSWORD: 'unife2024'
-    ports:
-      - '3306:3306'
     expose:
       - '3306'
     volumes:
@@ -17,8 +15,6 @@ services:
 
   mock:
     build: ./Mock
-    ports:
-      - '3000:3000'
     expose:
       - '3000'
     networks:
@@ -26,8 +22,6 @@ services:
 
   backend:
     build: ./JARVIS-backend
-    ports:
-      - '8080:8080'
     expose:
       - '8080'
     depends_on:
