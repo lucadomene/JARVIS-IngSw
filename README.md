@@ -17,10 +17,12 @@ Tali componenti sono:
 * Frontend (VueJS)
 
 Affinché risultasse semplice effettuare il deployment dei quattro suddetti componenti, sono stati incapsulati in altrettanti container correlati dal file `docker-compose.yaml`.
+
 Mediante il comando
 ```sh
 sudo docker compose up
 ```
-è possibile avviare i componenti. E' importante che tale comando venga effettuato nel direttorio contenente il file `docker-compose.yaml`.
+è possibile avviare i componenti.
+**È importante che tale comando venga effettuato nel direttorio contenente il file `docker-compose.yaml`.**
 
 L'accesso all'interfaccia di frontend è fruibile da `localhost:80`
