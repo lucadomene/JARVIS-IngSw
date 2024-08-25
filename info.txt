@@ -1,0 +1,16 @@
+# COMPONENTI DEL GRUPPO
+Annunziata Marco
+Domeneghetti Luca
+Masina Giulia
+Turola Sveva
+Varesco Sara
+
+# REPOSITORY GIT (frontend + backend + mock + database, assieme al docker-compose.yaml)
+https://github.com/lucadomene/IngSw-project
+
+# TRELLO
+https://trello.com/b/5CpUcXQY/backend
+https://trello.com/b/lAkjVjDu/frontend
+
+# VIDEO DEMO
+https://www.youtube.com/watch?v=eamHdi1XjII
