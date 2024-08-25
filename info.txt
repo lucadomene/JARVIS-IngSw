@@ -5,12 +5,30 @@ Masina Giulia
 Turola Sveva
 Varesco Sara
 
-# REPOSITORY GIT (frontend + backend + mock + database, assieme al docker-compose.yaml)
+-----------------------
+
+# REPOSITORY GIT
+## frontend + backend + mock + database, assieme al docker-compose.yaml
 https://github.com/lucadomene/IngSw-project
+
+## solo backend
+https://github.com/lucadomene/JARVIS-backend
+
+## solo frontend
+https://github.com/lucadomene/JARVIS-frontend
+
+-----------------------
 
 # TRELLO
 https://trello.com/b/5CpUcXQY/backend
 https://trello.com/b/lAkjVjDu/frontend
+
+-----------------------
+
+# PRESENTAZIONE FIGMA
+https://www.figma.com/slides/WSar5luPppgZGhmLMGn5hO/Relazione-IngSW?node-id=3-301&t=QirLh56z5MlrLaUo-1
+
+-----------------------
 
 # VIDEO DEMO
 https://www.youtube.com/watch?v=eamHdi1XjII
