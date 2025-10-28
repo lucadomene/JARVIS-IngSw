@@ -123,23 +123,23 @@ async function initializeMarkers(){
     const startTime = performance.now();
     try{
       const response = await axios.get(
-        'https://nominatim.openstreetmap.org/search',
-        {
-          params: {
-            q: address,
-            format: 'json'
-          },
-        });
-        const endTime = performance.now();
-        console.log(`Richiesta "${address}" terminata con successo in ${(endTime-startTime)/1000} secondi`)
-        if(response.data && response.data.length > 0) {
-          const bestResult = response.data[0];
-          localStorage.setItem(address, JSON.stringify(bestResult));
-          createMarker(address, bestResult);
-        }
-        else{
-          console.error("Nessun risultato trovato per '${address}'");
-        }
+          'https://nominatim.openstreetmap.org/search',
+          {
+            params: {
+              q: address,
+              format: 'json'
+            },
+          });
+      const endTime = performance.now();
+      console.log(`Richiesta "${address}" terminata con successo in ${(endTime-startTime)/1000} secondi`)
+      if(response.data && response.data.length > 0) {
+        const bestResult = response.data[0];
+        localStorage.setItem(address, JSON.stringify(bestResult));
+        createMarker(address, bestResult);
+      }
+      else{
+        console.error("Nessun risultato trovato per '${address}'");
+      }
     }
     catch (error) {
       const endTime = performance.now();
@@ -187,14 +187,14 @@ function createMarker(address:string, result:any){
 
 function findAddress(address: string) { // utilizzo barra di ricerca
   axios.get(
-        'https://nominatim.openstreetmap.org/search',
-        {
-            params: {
-              q: address,
-              format: 'json'
-            }
+      'https://nominatim.openstreetmap.org/search',
+      {
+        params: {
+          q: address,
+          format: 'json'
         }
-    ).then((response) =>{
+      }
+  ).then((response) =>{
     const { lat, lon } = response.data[0]; // response.data contiene più oggetti di luoghi trovati (?)
     map.setView([lat, lon], 30);
   }).catch (error => {
@@ -253,33 +253,33 @@ function bookEvent(){
         'Content-Type': 'application/json'
       }
     })
-    .then(response => {
-      console.log('Booking ID:', response.data);
-      let bookingId = response.data;
-      if (dataUser.value != null && selectedVenue.value != undefined) {
-        const newBooking = new Booking(
-            bookingId,
-            dataUser.value.codice_fiscale,
-            dataEventInfo.value.date,
-            {start: dataEventInfo.value.schedule_start, end: dataEventInfo.value.schedule_end},
-            selectedVenue.value,
-            selectedPersonnel.value,
-        )
-        console.log(dataBooking.value);
-        dataBooking.value.push(newBooking);
-        console.log(dataBooking.value);
-        bookingStore.updateData();
-        useDialog('', 'PRENOTAZIONE AVVENUTA CON SUCCESSO\n');
-        confetti.addConfetti({
-          confettiRadius: 7,
-          confettiNumber: 700,
+        .then(response => {
+          console.log('Booking ID:', response.data);
+          let bookingId = response.data;
+          if (dataUser.value != null && selectedVenue.value != undefined) {
+            const newBooking = new Booking(
+                bookingId,
+                dataUser.value.codice_fiscale,
+                dataEventInfo.value.date,
+                {start: dataEventInfo.value.schedule_start, end: dataEventInfo.value.schedule_end},
+                selectedVenue.value,
+                selectedPersonnel.value,
+            )
+            console.log(dataBooking.value);
+            dataBooking.value.push(newBooking);
+            console.log(dataBooking.value);
+            bookingStore.updateData();
+            useDialog('', 'PRENOTAZIONE AVVENUTA CON SUCCESSO\n');
+            confetti.addConfetti({
+              confettiRadius: 7,
+              confettiNumber: 700,
+            })
+          } else throw new Error('dataUser o selectedVenue non definito!');
         })
-      } else throw new Error('dataUser o selectedVenue non definito!');
-    })
-    .catch(error => {
-      useDialog("Errore!", "Errore durante la aggiunta della prenotazione. Riprovare o aggiornare la pagina.");
-      console.error('Errore:', error.response ? error.response.data : error.message);
-    });
+        .catch(error => {
+          useDialog("Errore!", "Errore durante la aggiunta della prenotazione. Riprovare o aggiornare la pagina.");
+          console.error('Errore:', error.response ? error.response.data : error.message);
+        });
   }
   else{
     console.error("dataUser o selectedVenue non definito!");
@@ -313,16 +313,16 @@ function keepMapUpdated() {
         <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" :style="{width: loadedMarkers + '%'}"> <!--  TODO: cambiare aria-valuenow-->
           Caricamento luoghi: {{loadedMarkers.toFixed(1)}}%
         </div>
-      </div> 
+      </div>
     </section>
     <section>
       <section class="item-disposition booking-box">
         <div style="order: 2"></div>
-          <h1>Informazioni sull'evento</h1>
-          <h2>Data: {{dataEventInfo.date}}</h2>
-          <h2>Tipo di evento: {{dataEventInfo.event_type}}</h2>
-          <h2>Orario di inizio: {{dataEventInfo.schedule_start}}</h2>
-          <h2>Orario di fine: {{dataEventInfo.schedule_end}}</h2>
+        <h1>Informazioni sull'evento</h1>
+        <h2>Data: {{dataEventInfo.date}}</h2>
+        <h2>Tipo di evento: {{dataEventInfo.event_type}}</h2>
+        <h2>Orario di inizio: {{dataEventInfo.schedule_start}}</h2>
+        <h2>Orario di fine: {{dataEventInfo.schedule_end}}</h2>
       </section>
       <section id="bookingBox" class="item-disposition booking-box" v-if="selectedVenue">
         <div style="order: 2"></div>
@@ -370,89 +370,89 @@ function keepMapUpdated() {
 </template>
 
 <style scoped>
-  h1{
-    font-size: 2em;
-  }
-  h2{
-    font-size: 1.3em;
-  }
-  #map{
-    border: solid var(--highlight-color) 2px;
-    animation: fade-down 0.4s;
-  }
+h1{
+  font-size: 2em;
+}
+h2{
+  font-size: 1.3em;
+}
+#map{
+  border: solid var(--highlight-color) 2px;
+  animation: fade-down 0.4s;
+}
 
-  #map:hover{
-    box-shadow: 0 2px 20px var(--highlight-color);
-    transition: .3s;
-  }
+#map:hover{
+  box-shadow: 0 2px 20px var(--highlight-color);
+  transition: .3s;
+}
 
-  .item-disposition{
-    margin: 20px;
-  }
+.item-disposition{
+  margin: 20px;
+}
 
-  .booking-box{
-    border: solid 3px var(--highlight-color);
-    background-color: var(--color-background-mute);
-    padding: 20px;
-    color: var(--color-text);
-    animation: fade-up 0.5s;
-  }
+.booking-box{
+  border: solid 3px var(--highlight-color);
+  background-color: var(--color-background-mute);
+  padding: 20px;
+  color: var(--color-text);
+  animation: fade-up 0.5s;
+}
 
-  .booking-box:hover{
-    box-shadow: 0 2px 10px var(--highlight-color);
-    transition: .3s;
-  }
+.booking-box:hover{
+  box-shadow: 0 2px 10px var(--highlight-color);
+  transition: .3s;
+}
 
+.disposition{
+  display: flex;
+  align-content: center;
+}
+
+input[type='text'] {
+  border: solid var(--highlight-color) 2px;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px 5px 5px 0;
+}
+
+#search-button {
+  border: solid var(--highlight-color) 2px;
+  border-radius: 5px;
+  background-color: var(--highlight-color);
+  padding: 5px;
+  margin: 5px 5px 5px 0;
+  transition: 0.5s;
+}
+
+#search-button:hover {
+  border: solid var(--highlight-color) 2px;
+  border-radius: 5px;
+  background-color: var(--highlight-color);
+  transition: 0.5s;
+}
+
+@media(min-width: 576px){
   .disposition{
-    display: flex;
-    align-content: center;
+    flex-direction: row;
   }
-
-  input[type='text'] {
-    border: solid var(--highlight-color) 2px;
-    border-radius: 5px;
-    padding: 5px;
-    margin: 5px 5px 5px 0;
+  #map {
+    height: 580px;
+    width: 580px;
   }
-
-  #search-button {
-    border: solid var(--highlight-color) 2px;
-    border-radius: 5px;
-    background-color: var(--highlight-color);
-    padding: 5px;
-    margin: 5px 5px 5px 0;
-    transition: 0.5s;
+  .booking-box {
+    width: 60ch;
   }
-
-  #search-button:hover {
-    border: solid var(--highlight-color) 2px;
-    border-radius: 5px;
-    background-color: var(--highlight-color);
-    transition: 0.5s;
+}
+@media(max-width: 576px){
+  .disposition{
+    flex-direction: column;
   }
-
-  @media(min-width: 576px){
-    .disposition{
-      flex-direction: row;
-    }
-    #map {
-      height: 580px;
-      width: 580px;
-    }
-    .booking-box {
-      width: 60ch;
-    }
+  #map {
+    height: 480px;
+    width: 100%;
   }
-  @media(max-width: 576px){
-    .disposition{
-      flex-direction: column;
-    }
-    #map {
-      height: 480px;
-      width: 100%;
-    }
-    .booking-box {
-      width: 90%;
-    }
+  .booking-box {
+    width: 90%;
   }
+}
 </style>
