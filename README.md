@@ -1,4 +1,4 @@
-# JARVIS-backend
+# JARVIS
 Repository del progetto inerente il corso di "Ingegneria del Software" (UniFe) A.A. 2023/2024
 ## Il team J.A.R.V.I.S.
 * [@svevaturola](https://github.com/svevaturola) - Architetto 
